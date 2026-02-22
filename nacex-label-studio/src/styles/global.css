@@ -1,0 +1,64 @@
+/* ═══════════════════════════════════════════════════════
+   NACEX LABEL STUDIO — Global Styles
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  --bg: #0f0f13;
+  --surface: #1a1a22;
+  --card: #22222e;
+  --border: #2e2e3e;
+  --text: #e4e4ef;
+  --muted: #8888a0;
+  --nacex: #FF5000;
+  --nacex-light: #FF7733;
+  --nacex-dark: #CC3F00;
+  --white: #ffffff;
+  --green: #34c759;
+  --red: #ff3b30;
+  --yellow: #fdd835;
+  --radius: 8px;
+  --radius-sm: 6px;
+  --font: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+  --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* Selection */
+::selection { background: var(--nacex); color: white; }
+
+/* Focus */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--nacex) !important;
+  box-shadow: 0 0 0 2px rgba(255, 80, 0, 0.15);
+}
+
+/* Transitions */
+button { transition: all 0.15s ease; }
+button:hover { filter: brightness(1.1); }
+button:active { transform: scale(0.97); }

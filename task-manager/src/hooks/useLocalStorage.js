@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-
 /**
  * useLocalStorage - Custom hook para persistir estado en localStorage
  * 
