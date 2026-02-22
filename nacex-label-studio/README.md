@@ -17,16 +17,20 @@ Se abrirá automáticamente en `http://localhost:3001`
 src/
 ├── components/
 │   ├── Label840/          # Etiqueta estándar Nacex
-│   │   ├── index.jsx      # Componente principal (form + preview + ZPL)
-│   │   ├── LabelForm.jsx  # Formulario con pestañas
-│   │   └── LabelPreview.jsx # Vista previa visual de la etiqueta
+│   ├── Label841/          # Diana — bultos adicionales
+│   ├── LabelCambio/       # Cambio de artículo
+│   ├── LabelDevolucion/   # Devolución
+│   ├── LabelDocumentar/   # Documentar envío
+│   ├── LabelNacexShop/    # Punto de entrega NacexShop
+│   ├── LabelInternacional/ # Envíos Europa
+│   ├── LabelEditorWrapper.jsx  # Shell compartido (toolbar ZPL)
 │   ├── BarcodeCanvas.jsx  # Renderizado de Code128 en canvas
 │   └── FormFields.jsx     # Componentes de formulario reutilizables
 ├── constants/
 │   └── services.js        # Servicios, envases, portes (equiv. Constantes.php)
 ├── utils/
 │   ├── barcode.js         # Encoder Code128B
-│   └── zplGenerator.js    # Generador de código ZPL
+│   └── zplGenerator.js    # 7 generadores ZPL (uno por tipo)
 ├── styles/
 │   └── global.css         # Variables CSS y reset
 ├── App.jsx                # Shell principal con navegación
@@ -35,15 +39,15 @@ src/
 
 ## Plantillas disponibles
 
-| Plantilla | Estado | Equivalente PHP |
-|-----------|--------|----------------|
-| 840 Estándar | ✅ Lista | `label.php` / `label-zebra.php` |
-| 841 Diana | 🔜 Próximamente | `label-diana.php` |
-| Cambio | 🔜 Próximamente | `label-cambio.php` |
-| Devolución | 🔜 Próximamente | `label-devolucion.php` |
-| Documentar Envío | 🔜 Próximamente | `label-documentar-envio.php` |
-| NacexShop | 🔜 Próximamente | (variante 840) |
-| Internacional | 🔜 Próximamente | (variante 840) |
+| Plantilla | Estado | Equivalente PHP | Color |
+|-----------|--------|----------------|-------|
+| 840 Estándar | ✅ Lista | `label.php` | Naranja Nacex |
+| 841 Diana | ✅ Lista | `label-diana.php` | Púrpura |
+| Cambio | ✅ Lista | `label-cambio.php` | Naranja oscuro |
+| Devolución | ✅ Lista | `label-devolucion.php` | Azul |
+| Documentar Envío | ✅ Lista | `label-documentar-envio.php` | Teal |
+| NacexShop | ✅ Lista | variante 840 shop | Verde |
+| Internacional | ✅ Lista | variante 840 int | Índigo |
 
 ## Características
 

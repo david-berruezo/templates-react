@@ -1,10 +1,27 @@
 import { useState } from 'react';
 import { LABEL_TYPES } from './constants/services';
 import Label840 from './components/Label840';
+import Label841 from './components/Label841';
+import LabelCambio from './components/LabelCambio';
+import LabelDevolucion from './components/LabelDevolucion';
+import LabelDocumentar from './components/LabelDocumentar';
+import LabelNacexShop from './components/LabelNacexShop';
+import LabelInternacional from './components/LabelInternacional';
+
+const COMPONENTS = {
+  '840': Label840,
+  '841': Label841,
+  'cambio': LabelCambio,
+  'devolucion': LabelDevolucion,
+  'documentar': LabelDocumentar,
+  'nacexshop': LabelNacexShop,
+  'internacional': LabelInternacional,
+};
 
 export default function App() {
   const [activeLabel, setActiveLabel] = useState('840');
   const [showNav, setShowNav] = useState(false);
+  const ActiveComponent = COMPONENTS[activeLabel];
 
   return (
     <div style={styles.app}>
@@ -20,7 +37,7 @@ export default function App() {
           </span>
         </div>
         <div style={styles.headerCenter}>
-          {LABEL_TYPES.filter(l => l.status === 'ready').map(l => (
+          {LABEL_TYPES.map(l => (
             <button
               key={l.id}
               onClick={() => { setActiveLabel(l.id); setShowNav(false); }}
@@ -70,19 +87,10 @@ export default function App() {
 
       {/* ═══ CONTENT ═══ */}
       <div style={styles.content}>
-        {activeLabel === '840' && <Label840 />}
-
-        {activeLabel !== '840' && (
+        {ActiveComponent ? <ActiveComponent /> : (
           <div style={styles.placeholder}>
-            <div style={styles.placeholderIcon}>
-              {LABEL_TYPES.find(l => l.id === activeLabel)?.icon || '🏷️'}
-            </div>
-            <h2 style={styles.placeholderTitle}>
-              {LABEL_TYPES.find(l => l.id === activeLabel)?.name || 'Etiqueta'}
-            </h2>
-            <p style={styles.placeholderDesc}>
-              Esta plantilla estará disponible próximamente.
-            </p>
+            <div style={styles.placeholderIcon}>🏷️</div>
+            <h2 style={styles.placeholderTitle}>Selecciona una plantilla</h2>
           </div>
         )}
       </div>

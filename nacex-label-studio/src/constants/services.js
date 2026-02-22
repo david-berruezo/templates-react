@@ -60,10 +60,9 @@ export const SERVICIOS_INT = Object.fromEntries(
 );
 
 /**
- * Datos de ejemplo realistas para la etiqueta 840
+ * Base compartida de datos de ejemplo
  */
-export const DEFAULT_840 = {
-  servicio: '08',
+const SHARED_DEFAULTS = {
   fecha: new Date().toLocaleDateString('es-ES'),
   remitente: 'MI TIENDA ONLINE SL',
   dir_rec: 'Pol. Industrial Zona Franca, Nave 12',
@@ -79,11 +78,21 @@ export const DEFAULT_840 = {
   pais: 'ES',
   portes: 'O',
   envase: '2',
-  bultos: '1',
-  totalBultos: '1',
   route: 'R015',
   color: '#E20613',
   code: '0028',
+  obs: '',
+  abonado: '0001/001',
+};
+
+/**
+ * Datos de ejemplo realistas para la etiqueta 840
+ */
+export const DEFAULT_840 = {
+  ...SHARED_DEFAULTS,
+  servicio: '08',
+  bultos: '1',
+  totalBultos: '1',
   barcode1: '840001000185453141',
   barcode2: 'NX04ES0028013',
   reem: false,
@@ -95,7 +104,142 @@ export const DEFAULT_840 = {
   alias: '',
   contenido: '',
   valor_declarado: '',
-  abonado: '0001/001',
+  contador: '001',
+};
+
+export const DEFAULT_841 = {
+  ...SHARED_DEFAULTS,
+  servicio: '08',
+  bultos: '2',
+  totalBultos: '3',
+  bultoActual: '2',
+  barcode1: '841002000185453141',
+  barcode1_original: '840001000185453141',
+  barcode2: 'NX04ES0028013',
+  ref: 'pedido_1042',
+  ref_cms: '1042',
+  obs: '',
+  contador: '002',
+};
+
+export const DEFAULT_CAMBIO = {
+  ...SHARED_DEFAULTS,
+  servicio: '08',
+  bultos: '1',
+  totalBultos: '1',
+  barcode1: '840001000185453141',
+  barcode2: 'NX04ES0028013',
+  ref: 'pedido_1042',
+  ref_cms: '1042',
+  obs: 'CAMBIO - Recoger artículo anterior',
+  motivo_cambio: 'Talla incorrecta',
+  // Datos del artículo de cambio
+  articulo_original: 'Camiseta Talla M - Ref: CAM-001',
+  articulo_nuevo: 'Camiseta Talla L - Ref: CAM-001',
+  contador: '001',
+};
+
+export const DEFAULT_DEVOLUCION = {
+  ...SHARED_DEFAULTS,
+  servicio: '27',
+  bultos: '1',
+  totalBultos: '1',
+  // En devolución el remitente es el cliente y el destino es el almacén
+  client: 'MI TIENDA ONLINE SL',
+  address: 'Pol. Industrial Zona Franca, Nave 12',
+  postcode: '08040',
+  city_ent: 'BARCELONA',
+  per_ent: 'Almacén Devoluciones',
+  phone: '934 567 890',
+  remitente: 'JUAN GARCIA LOPEZ',
+  dir_rec: 'Calle Gran Vía, 45 3º B',
+  cp_rec: '28013',
+  pob_rec: 'Madrid',
+  tel_rec: '+34 612 345 678',
+  barcode1: 'RET840001000185453141',
+  barcode2: 'NX27ES0008040',
+  ref: 'DEV-1042',
+  ref_cms: '1042',
+  obs: 'DEVOLUCIÓN - No abrir, producto precintado',
+  motivo_devolucion: 'Producto defectuoso',
+  route: 'R003',
+  color: '#1565C0',
+  code: '0008',
+  contador: '001',
+};
+
+export const DEFAULT_DOCUMENTAR = {
+  ...SHARED_DEFAULTS,
+  servicio: '08',
+  bultos: '1',
+  totalBultos: '1',
+  barcode1: '840001000185453141',
+  barcode2: 'NX04ES0028013',
+  ref: 'pedido_1042',
+  ref_cms: '1042',
+  obs: '',
+  cod_expedicion: '85453141',
+  estado_expedicion: 'Pendiente de documentar',
+  peso: '2.5',
+  largo: '30',
+  ancho: '20',
+  alto: '15',
+  contenido_doc: 'Ropa y complementos',
+  contador: '001',
+};
+
+export const DEFAULT_NACEXSHOP = {
+  ...SHARED_DEFAULTS,
+  servicio: '31',
+  bultos: '1',
+  totalBultos: '1',
+  barcode1: '840001000185453141',
+  barcode2: 'NX31ES0028013',
+  ref: 'pedido_1042',
+  ref_cms: '1042',
+  obs: '',
+  es_nacexshop: true,
+  alias: 'PAPELERÍA GARCÍA',
+  punto_id: 'ES-MAD-00142',
+  punto_direccion: 'Calle Alcalá, 120',
+  punto_cp: '28009',
+  punto_ciudad: 'MADRID',
+  punto_horario: 'L-V 9:00-20:00, S 10:00-14:00',
+  reem: false,
+  amount: '0.00',
+  route: 'R015',
+  color: '#2E7D32',
+  code: '0028',
+  contador: '001',
+};
+
+export const DEFAULT_INTERNACIONAL = {
+  ...SHARED_DEFAULTS,
+  servicio: 'A',
+  client: 'PIERRE DUPONT',
+  address: '15 Rue de Rivoli',
+  postcode: '75001',
+  city_ent: 'PARIS',
+  per_ent: 'Pierre Dupont',
+  phone: '+33 6 12 34 56 78',
+  pais: 'FR',
+  bultos: '1',
+  totalBultos: '1',
+  barcode1: '840001000185453141',
+  barcode2: 'NXAFR0075001',
+  ref: 'pedido_1042',
+  ref_cms: '1042',
+  obs: 'Fragile / Frágil',
+  reem: false,
+  amount: '0.00',
+  contenido: 'Artículos textiles',
+  valor_declarado: '89.90',
+  hs_code: '6109.10',
+  peso: '1.2',
+  num_articulos: '3',
+  route: 'INT-FR',
+  color: '#1565C0',
+  code: 'FR75',
   contador: '001',
 };
 
@@ -104,10 +248,10 @@ export const DEFAULT_840 = {
  */
 export const LABEL_TYPES = [
   { id: '840', name: 'Etiqueta 840', desc: 'Estándar Nacex', icon: '🏷️', status: 'ready' },
-  { id: '841', name: 'Etiqueta 841 Diana', desc: 'Bultos adicionales', icon: '🎯', status: 'soon' },
-  { id: 'cambio', name: 'Cambio', desc: 'Etiqueta de cambio', icon: '🔄', status: 'soon' },
-  { id: 'devolucion', name: 'Devolución', desc: 'Etiqueta de devolución', icon: '↩️', status: 'soon' },
-  { id: 'documentar', name: 'Documentar Envío', desc: 'Documentar envío', icon: '📄', status: 'soon' },
-  { id: 'nacexshop', name: 'NacexShop', desc: 'Punto de entrega', icon: '🏪', status: 'soon' },
-  { id: 'internacional', name: 'Internacional', desc: 'Envíos Europa', icon: '🌍', status: 'soon' },
+  { id: '841', name: 'Etiqueta 841 Diana', desc: 'Bultos adicionales', icon: '🎯', status: 'ready' },
+  { id: 'cambio', name: 'Cambio', desc: 'Etiqueta de cambio', icon: '🔄', status: 'ready' },
+  { id: 'devolucion', name: 'Devolución', desc: 'Etiqueta de devolución', icon: '↩️', status: 'ready' },
+  { id: 'documentar', name: 'Documentar Envío', desc: 'Documentar envío', icon: '📄', status: 'ready' },
+  { id: 'nacexshop', name: 'NacexShop', desc: 'Punto de entrega', icon: '🏪', status: 'ready' },
+  { id: 'internacional', name: 'Internacional', desc: 'Envíos Europa', icon: '🌍', status: 'ready' },
 ];
